@@ -6,11 +6,11 @@
 ;   bsave "cw.play.1950",1950:1980
 ;   bsave "cw.sfx.5e36",5e36:8b9d
 
-temp = $FB
-dst  = $FC
-src  = $FE
+temp        = $FB ; menu item key name, delay for player
+dst         = $FC
+src         = $FE
 
-PRODOS = $BF00
+PRODOS      = $BF00
 
 KEY         = $C000
 KEYSTROBE   = $C010
@@ -48,18 +48,18 @@ __START
         JSR TEXT
         JSR HOME
 
-        LDA #'A'+$80
+        LDA #'A'+$80    ; menu item key name
         STA temp
 
-        LDX #$5E    ; hi
-        LDY #$36    ; lo
+        LDX #$5E        ; hi - original CW SFX
+        LDY #$36        ; lo - voice sample location
         STX src+1
         STY src+0
 
         STX Pointers+1
         STY Pointers+0
 
-        LDX #>Pointers
+        LDX #>Pointers  ; hi
         LDY #<Pointers+2
         STX dst+1
         STY dst+0
@@ -167,11 +167,11 @@ DoneDelay
         PLA
         CMP #$FE
         BEQ SkipDelay
-DAC
+Delay2
         LDA #$FF
         NOP
         EOR #$FF
-        STA DAC+1
+        STA Delay2+1        ; Waste 4 cycles
         LDA SQUEEKER
 SkipDelay
         INC src+0
