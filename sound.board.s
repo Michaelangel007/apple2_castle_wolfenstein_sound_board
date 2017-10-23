@@ -148,6 +148,7 @@ PARMTABLE
         DW   0000          ;Pointer reserved for future use
 
 
+; Player ripped from $1950
 Play
         LDY #$00
 NextNote
@@ -186,7 +187,7 @@ SamePage
         DS \,$00
 Pointers            ; This can't go on the previous page since it spills over due to lazy code above
         DS $36,$00
-SFX     PUTBIN sfx_5e36
+SFX     PUTBIN cw.sfx.5e36
 
         DS \,$FF    ; Pad with End-of-Song
 __END
