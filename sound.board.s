@@ -15,7 +15,7 @@ PRODOS = $BF00
 KEY         = $C000
 KEYSTROBE   = $C010
 
-SQUEEKER    = $C030
+SQUEEKER    = $C030 ; 1-bit audio ... who knew Sony would COPY the idea with SACD in 1999!
 
 TEXT        = $FB39 ; SETTXT
 HOME        = $FC58
